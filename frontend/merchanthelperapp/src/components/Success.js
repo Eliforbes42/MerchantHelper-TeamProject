@@ -1,5 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
+import CreateUser from './CreateUser'
+import {
+    Switch,
+    Route,
+    Redirect
+}              from 'react-router-dom';
 
 
 class Success extends React.Component {
@@ -9,6 +15,7 @@ class Success extends React.Component {
     componentDidMount(){
         const code = new URLSearchParams(this.props.location.search);
         console.log('Code', code.get('code'));
+
         axios({
             baseURL: 'https://github.com/login/oauth/access_token',
             method: 'POST',
@@ -19,20 +26,29 @@ class Success extends React.Component {
             body: {
                 client_id: '06e862791312dfd72480',
                 client_secret: '4160078d4f864ec99533255daf1fc777fe5a4902',
-                code: code
+                code: String(code).substr(5)
             }
         })
             .then( res => console.log(res.data))
-            .catch(err => console.log(err));
+            .catch(err => alert(err));
     };
+
+    renderRedirect = () => {
+        //Checking that user exists
+        //True:     redirect to Home
+        //False:    redirect to CreateUser
+        if(true){
+            return ( <CreateUser/> )
+        }
+    }
+
     render() {
         return (
             <div>
-                <h1>Success login</h1>
+                {this.renderRedirect()}
             </div>
         )
     }
-
 }
 
 export default Success;
