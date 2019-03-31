@@ -3,8 +3,6 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/addUser', function(req, res) {
-  console.log(req.params);
-  console.log(req.query);
   if(req.query.name != null){
     var newUser = new User({name:req.query.name,todo:[]});
     User.addUser(newUser, function(err,result){
