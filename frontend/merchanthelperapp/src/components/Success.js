@@ -15,15 +15,35 @@ class Success extends React.Component {
     componentDidMount(){
         const code = new URLSearchParams(this.props.location.search);
         console.log('Code', code.get('code'));
+        const url = 'https://github.com/login/oauth/access_token';
+        const data = {
+                client_id: '06e862791312dfd72480',
+                client_secret: '4160078d4f864ec99533255daf1fc777fe5a4902',
+                code: String(code).substr(5)
+            }
 
+        // fetch(url, {
+        //     method: 'POST',
+        //     body: JSON.stringify(data),
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     mode: 'cors'
+        // }).then(res => res.json())
+        //     .then( response => console.log(JSON.stringify(response)))
+        //     .catch(err => alert(err));
+        
+        var config = {
+
+        };
         axios({
-            baseURL: 'https://github.com/login/oauth/access_token',
+            url: 'https://github.com/login/oauth/access_token',
             method: 'POST',
-            headers: {
-                'Access-Control-Allow-Origin': '*',
-                'Content-Type': 'application/json',
+            headers: {'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+            'Content-Type': 'application/json'
             },
-            body: {
+            body:{
                 client_id: '06e862791312dfd72480',
                 client_secret: '4160078d4f864ec99533255daf1fc777fe5a4902',
                 code: String(code).substr(5)
