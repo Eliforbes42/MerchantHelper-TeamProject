@@ -1,4 +1,4 @@
-const {Player} = require('../models/playerModel');
+const {User} = require('../models/playerModel');
 var express = require('express');
 var router = express.Router();
 
@@ -6,8 +6,8 @@ router.get('/addUser', function(req, res) {
   console.log(req.params);
   console.log(req.query);
   if(req.query.name != null){
-    var newPlayer = new Player({name:req.query.name,todo:[]});
-    Player.addPlayer(newPlayer, function(err,result){
+    var newUser = new User({name:req.query.name,todo:[]});
+    User.addUser(newUser, function(err,result){
       if(err) {
         res.send(err);
       } else {

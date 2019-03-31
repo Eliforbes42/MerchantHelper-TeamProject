@@ -1,15 +1,18 @@
 'user strict'
 var ObjectId = require('mongodb').ObjectId;
-var {insert,update} = require('./db');
+var {insert,update,select} = require('./db');
 // {name:"string",todo:[]}
-var Player = function(player) {
-    this.name = player.name;
-    this.todo = player.todo;
+var User = function(user) {
+    this.name = user.name;
+    this.todo = user.todo;
 };
 
-Player.addPlayer = function(player, result) {
-    insert(player,'players');
-    result("Player '"+player.name+"' was added to the database.");
+User.addUser = function(user, result) {
+    //select('name',user.name,'players').then((logg)=>{console.log(logg);});
+    //console.log({getRes});
+    //TODO-Promisify to check for existing player
+    insert(user,'players');
+    result("User '"+user.name+"' was added to the database.");
 };
 
-module.exports = {Player};
+module.exports = {User};

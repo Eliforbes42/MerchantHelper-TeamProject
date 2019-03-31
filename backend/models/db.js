@@ -21,5 +21,18 @@ module.exports = {
                 if (err) throw err;
             });
         });
+    },
+    select: (id, data, collection)=>{
+        mongoClient.connect(url, function(err, db) {
+            if (err) throw err;
+            const dbo = db.db('merchantDB');
+            const pk = {[id]: data};
+            console.log(pk);
+            //const updates = {$set: data};
+            dbo.collection(collection).find(pk).toArray(function(err,res){
+                if (err) throw err;
+                else {console.log(res); return res;}
+            });
+        });
     }
 } //export
