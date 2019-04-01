@@ -1,5 +1,7 @@
 import React from 'react';
-import { Alert, Card, Button, Col, Row } from 'react-bootstrap';
+import { Alert, Card, Button, Col, Row, Container } from 'react-bootstrap';
+import sample from '../mockdata/toDoItems.json';
+import moment from 'moment';
 
 
 class ToDoList extends React.Component {
@@ -8,50 +10,62 @@ class ToDoList extends React.Component {
     };
 
     state = {
-        hideAlert: false
+        hideAlert: false,
+        toDoData: []
+    }
+
+    componentDidMount(){
+        this.setState({toDoData: sample});
     }
 
     addCards = () => {
-        const toDoItem = (cardId) => {
+        const toDoItem = (item) => {
             return (
             <Col>
             <center>
-            <Card id={cardId} bg="dark" style={{ width: '25rem',  "box-shadow":'0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'}}>
+            <Card id={item.id} bg="dark" style={{ width: '20vw', "box-shadow":'0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'}}>
             <Card.Body>
-                <Card.Title style={{color:'white'}}>Merchant Quest</Card.Title>
+                <Card.Title style={{color:'white'}}>{item.title}</Card.Title>
                 <Card.Text style={{color:'white'}}>
-                Some quick example text to build on the card title and make up the bulk of
-                the card's content.
+                {item.description}
                 </Card.Text>
-                <Button variant="success" onClick={() => this.completeToDo(cardId)}>Complete</Button>
+                <Button variant="success" onClick={() => this.completeToDo(`${item.id}`)}>Complete</Button>
             </Card.Body>
             </Card>
             </center>
             </Col>
         )};
         let items = [];
-        for(let i = 0; i < 5; i++){
-            items.push(toDoItem(`Card-${i}`));
-        }
-        return this.formatRows(3, this.groupByCount(3,items));
+        this.state.toDoData.map(item => {
+            items.push(toDoItem(item));
+        })
+        return this.formatRows(3, this.groupByCount(4,items));
     }
 
-    completeToDo = (data) => {
-        document.getElementById(data).hidden = true;
+    completeToDo = (cardId) => {
+        let temp = [];
+        this.state.toDoData.map(item => {
+            if(item.id != cardId){
+                temp.push(item);
+            }
+        })
+        this.setState({toDoData: temp});
     }
 
     formatRows = (countsOf, data) => {
         let result = [];
         data.map(item => {
             result.push(
-                <div style={{height: '15rem'}}>
-                <Row>
+                <Row style={{height: '30rem'}}>
                     {item}
                 </Row>
-                </div>
             )
         })
-        return result;
+        return (
+            <Container style={{width: '80%'}}>
+            {result}
+            </Container>
+        );
     }
 
     groupByCount = (countsOf, data) => {
@@ -74,11 +88,11 @@ class ToDoList extends React.Component {
     }
 
     loginAlert = () => {
-        if(localStorage.getItem('user') != 'undefined' && !this.state.hideAlert){
+        if(localStorage.getItem('user') != 'undefined' && !this.state.hideAlert && this.props.showAlert){
             return (
                 <Alert variant='success'>
                     Github successfully logged in! Welcome {localStorage.getItem('user')}
-                    <a style={{float: 'right'}} onClick={this.shouldHideAlert}>
+                    <a style={{float: 'right'}} href="#" onClick={this.shouldHideAlert}>
                         x
                     </a>
                 </Alert>
@@ -92,7 +106,7 @@ class ToDoList extends React.Component {
 
     render() {
         return (
-            <div>
+            <div style={{width: '100vw'}}>
                 {this.loginAlert()}
                 <center>
                 <div style={{height: '1rem'}} />
