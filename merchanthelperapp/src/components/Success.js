@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import ToDoList from './ToDoList'
+import Navbar from './navbar/navbar'
 import {
     Switch,
     Route,
@@ -68,6 +69,7 @@ class Success extends React.Component {
     render() {
         return (
             <div>
+                <Navbar/>
                 {this.renderRedirect()}
             </div>
         )
