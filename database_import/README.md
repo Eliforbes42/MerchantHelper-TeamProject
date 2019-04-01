@@ -4,6 +4,6 @@
 
 - Navigate to the Collection
 
-- On the navigation bar, Collection>Import Data
+- On the navigation bar, `Collection`>`Import Data`
 
 - Choose JSON
