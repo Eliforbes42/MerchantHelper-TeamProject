@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import CreateUser from './CreateUser'
+import ToDoList from './ToDoList'
 import {
     Switch,
     Route,
@@ -33,9 +34,6 @@ class Success extends React.Component {
         //     .then( response => console.log(JSON.stringify(response)))
         //     .catch(err => alert(err));
         
-        var config = {
-
-        };
         axios({
             url: 'https://github.com/login/oauth/access_token',
             method: 'POST',
@@ -50,7 +48,7 @@ class Success extends React.Component {
             }
         })
             .then( res => console.log(res.data))
-            .catch(err => alert(err));
+            .catch(err => console.log(err));
     };
 
     renderRedirect = () => {
@@ -58,7 +56,7 @@ class Success extends React.Component {
         //True:     redirect to Home
         //False:    redirect to CreateUser
         if(true){
-            return ( <CreateUser/> )
+            return ( <ToDoList/> )
         }
     }
 
