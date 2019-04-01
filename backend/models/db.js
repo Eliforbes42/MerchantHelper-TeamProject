@@ -11,21 +11,26 @@ module.exports = {
             });
         });
     },
-    insertUser: (data, collection)=>{
+    insertUser: (data, collection, result)=>{
         mongoClient.connect(url, function(err, db) {
             if (err) throw err;
             const dbo = db.db('merchantDB');
             const pk = {"name": data.name};
-            //const updates = {$set: data};
             dbo.collection(collection).find(pk).toArray(function(err,res){
                 if (err) throw err;
                 else {
                     if(res.length == 0){
-                        insert(data,collection);
-                        return "Success"; //These don't actually return anywhere?
+                        mongoClient.connect(url, function(err, db) {
+                            if (err) throw err;
+                            const dbo = db.db('merchantDB');
+                            dbo.collection(collection).insertMany([data],function(err, res){
+                                if (err) throw err;
+                                else result("User '"+data.name+"' was added to the database.");
+                            });
+                        });                        
                     }
                     else{
-                        return "Failed to add user -- Already exists in database."
+                        result("Failed to add User '"+data.name+"' -- Already exists in database.");
                     }
                 }
             });
