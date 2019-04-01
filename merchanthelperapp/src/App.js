@@ -9,7 +9,7 @@ import 'bootstrap-social/bootstrap-social.css';
 class App extends Component {
   render() {
     return (
-      <div>
+      <div style={{'background-color':'#ffeaa7'}}>
           <Main/>
       </div>
     );
