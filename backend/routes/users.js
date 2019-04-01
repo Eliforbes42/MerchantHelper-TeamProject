@@ -11,7 +11,8 @@ router.get('/getUser', function(req, res) {
   mongoClient.connect(url, function(err, db) {
     if (err) throw err;
     const dbo = db.db('mydb');
-    dbo.collection("users").find({name: "User1"}).toArray(function(err, res1) {
+    console.log(req.query);
+    dbo.collection("users").find({name: req.query.user}).toArray(function(err, res1) {
         if(err) {
             throw err;
         } else{
