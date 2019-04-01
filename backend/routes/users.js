@@ -1,10 +1,22 @@
+const {User} = require('../playerModel');
 var express = require('express');
 var router = express.Router();
 let mongoClient = require('mongodb').MongoClient;
 const url = `mongodb://localhost:27017/mydb`;
 
 router.get('/addUser', function(req, res) {
-  res.send("Index response");
+  if(req.query.name != null){
+    var newUser = new User({name:req.query.name,todo:[]});
+    User.addUser(newUser, function(err,result){
+      if(err) {
+        res.send(err);
+      } else {
+        res.json(result);
+      }
+    });
+  } else {
+    res.send("Error: No user to insert, name not provided.");
+  }    
 });
 
 /*

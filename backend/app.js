@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 /*ADD ROUTES FROM THE ROUTES FOLDER*/
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const islandsRouter = require('./routes/islands');
 const authRouter = require('./routes/auth');
 
 const app = express();
@@ -40,6 +41,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 /*ADD ROUTES TO APP*/
 app.use('/api/index', indexRouter);
 app.use('/api/users/', usersRouter);
+app.use('/api/islands/', islandsRouter);
 app.use('/api/auth/', authRouter);
 
 app.listen(port, '0.0.0.0', () => {
