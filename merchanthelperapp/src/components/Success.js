@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import CreateUser from './CreateUser'
 import ToDoList from './ToDoList'
 import {
     Switch,
@@ -36,7 +35,12 @@ class Success extends React.Component {
             const result = await rawData.json();
 
             console.log(result);
-            localStorage.setItem('user', result.username);
+            if(result.username != undefined){
+                localStorage.setItem('user', result.username);
+            }
+            else{
+                this.props.history.push('/');
+            }
             
             this.setState(this.renderRedirect = () => {
                 //Checking that user exists

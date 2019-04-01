@@ -7,6 +7,7 @@
     "bootstrap": "^4.3.1",
     "bootstrap-social": "^5.1.1",
     "fetch": "^1.1.0",
+    "moment": "^2.24.0",
     "proxy": "^0.2.4",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.6",
@@ -29,5 +30,5 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "proxy":"http://localhost:5000/"
+  "proxy": "http://localhost:5000/"
 }
