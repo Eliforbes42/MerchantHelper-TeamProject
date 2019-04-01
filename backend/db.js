@@ -1,5 +1,5 @@
 let mongoClient = require('mongodb').MongoClient;
-const url = `mongodb://localhost:5000/mydb`;
+const url = `mongodb://localhost:27017/mydb`;
 
 module.exports = {
     insert: (data, collection)=>{
