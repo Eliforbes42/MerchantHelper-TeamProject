@@ -8,11 +8,8 @@ const bodyParser = require('body-parser');
 /*ADD ROUTES FROM THE ROUTES FOLDER*/
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-<<<<<<< HEAD
 const islandsRouter = require('./routes/islands');
-=======
 const authRouter = require('./routes/auth');
->>>>>>> 2f229cda3aa9a0b7dd766062211bed1479d77880
 
 const app = express();
 const port = process.env.PORT || 5000;
