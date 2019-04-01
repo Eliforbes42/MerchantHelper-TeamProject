@@ -16,6 +16,7 @@ module.exports = {
             if (err) throw err;
             const dbo = db.db('merchantDB');
             const pk = {"name": data.name};
+            var returnObj = {name: data.name, added: false, message:""};
             dbo.collection(collection).find(pk).toArray(function(err,res){
                 if (err) throw err;
                 else {
@@ -25,12 +26,16 @@ module.exports = {
                             const dbo = db.db('merchantDB');
                             dbo.collection(collection).insertMany([data],function(err, res){
                                 if (err) throw err;
-                                else result("User '"+data.name+"' was added to the database.");
+                                else {
+                                    returnObj.added = true;
+                                    returnObj.message = "User was added to the database.";
+                                    result(returnObj);
+                                }
                             });
                         });                        
-                    }
-                    else{
-                        result("Failed to add User '"+data.name+"' -- Already exists in database.");
+                    } else{
+                        returnObj.message = "Error: User already exists in database.";
+                        result(returnObj);
                     }
                 }
             });
