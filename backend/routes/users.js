@@ -1,4 +1,4 @@
-const {User} = require('../models/playerModel');
+const {User} = require('../playerModel');
 var express = require('express');
 var router = express.Router();
 let mongoClient = require('mongodb').MongoClient;

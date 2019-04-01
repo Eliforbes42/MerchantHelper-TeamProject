@@ -1,4 +1,4 @@
-const {Island} = require('../models/islandModel');
+const {Island} = require('../islandModel');
 var express = require('express');
 var router = express.Router();
 
