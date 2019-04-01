@@ -21,19 +21,5 @@ module.exports = {
                 if (err) throw err;
             });
         });
-    },
-    findUser: (name, collection)=>{
-        mongoClient.connect(url, function(err, db) {
-            if (err) throw err;
-            const dbo = db.db('mydb');
-            dbo.collection(collection).find({name: name}).toArray(function(err, res1) {
-                if(err) {
-                    throw err;
-                } else{
-                  return res1;
-                }
-            });
-            
-        });
     }
 } //export
