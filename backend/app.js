@@ -8,9 +8,10 @@ const bodyParser = require('body-parser');
 /*ADD ROUTES FROM THE ROUTES FOLDER*/
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const authRouter = require('./routes/auth');
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -39,6 +40,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 /*ADD ROUTES TO APP*/
 app.use('/api/index', indexRouter);
 app.use('/api/users/', usersRouter);
+app.use('/api/auth/', authRouter);
 
 app.listen(port, '0.0.0.0', () => {
     console.log("UP AND RUNNING!");
