@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import ToDoList from './ToDoList'
-import Navbar from './navbar/navbar'
+import ToDoList from './ToDoList';
+import Navbar from './navbar/navbar';
+import moment from 'moment';
 import {
     Switch,
     Route,
@@ -25,34 +26,58 @@ class Success extends React.Component {
         const data = {
                 code: String(code).substr(5)
             };
-        (async () => {
-            const rawData = await fetch('/api/auth/getUser', {
-                method: 'POST',
-                body: JSON.stringify(data),
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            });
-            const result = await rawData.json();
+        let lastLogin = 0;
+        if(localStorage.getItem('lastLogin') != null){
+            const start = moment(new Date());
+            const end = moment(localStorage.getItem('lastLogin'));
+            const hours = moment.duration(start.diff(end)).asHours();
+            lastLogin = hours;
+           
+        }
+        if(localStorage.getItem('user')== null || localStorage.getItem('lastLogin') == null || lastLogin == 0 || lastLogin > 0.5){
+            (async () => {
+                const rawData = await fetch('/api/auth/getUser', {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                });
+                const result = await rawData.json();
 
-            console.log(result);
-            if(result.username != undefined){
-                localStorage.setItem('user', result.username);
-            }
-            else{
-                this.props.history.push('/');
-            }
-            
+                console.log(result);
+                if(result.username != undefined){
+                    localStorage.setItem('user', result.username);
+                    localStorage.setItem('lastLogin', moment().format());
+                    localStorage.setItem('showAlert', true);
+                }
+                else{
+                    this.props.history.push('/');
+                }
+                
+                this.setState(this.renderRedirect = () => {
+                    //Checking that user exists
+                    //True:     redirect to Home
+                    //False:    redirect to CreateUser
+                    if(true){
+                        return ( <ToDoList showAlert={true}/> )
+                    }
+                });
+                return result.username;
+            })();
+        }
+        else{
+            localStorage.setItem('showAlert', false);
             this.setState(this.renderRedirect = () => {
                 //Checking that user exists
                 //True:     redirect to Home
                 //False:    redirect to CreateUser
                 if(true){
-                    return ( <ToDoList/> )
+                    return ( <ToDoList showAlert={false}/> )
                 }
             });
-            return result.username;
-        })();
+            return localStorage.getItem('user');
+        }
     };
 
     // Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js

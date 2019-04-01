@@ -61,7 +61,7 @@ class Navbar extends React.Component {
         <div>
           <div style={styles.container}>
             <MenuButton open={this.state.menuOpen} onClick={()=>this.handleMenuClick()} color='white'/>
-            <div style={styles.logo}>Logo</div>
+            <div style={styles.logo}><center>{localStorage.getItem("user")}</center></div>
           </div>
           <Menu open={this.state.menuOpen}>
             {menuItems}
