@@ -49,7 +49,6 @@ class Success extends React.Component {
                 if(result.username != undefined){
                     localStorage.setItem('user', result.username);
                     localStorage.setItem('lastLogin', moment().format());
-                    localStorage.setItem('showAlert', true);
                 }
                 else{
                     this.props.history.push('/');
