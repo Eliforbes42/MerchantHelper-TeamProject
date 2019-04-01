@@ -66,7 +66,7 @@ class ToDoList extends React.Component {
         return (
             <div>
                 <Alert variant='success'>
-                    Github successfully logged in!
+                    Github successfully logged in! Welcome {localStorage.getItem('user')}
                 </Alert>
                 <h1>To Do List</h1>
                 {this.addCards()}

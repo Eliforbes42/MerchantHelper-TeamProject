@@ -3,6 +3,7 @@ var router = express.Router();
 var request = require('request');
 
 router.post('/getUser', function(req, res) {
+    console.log(req.body);
     request.post('https://github.com/login/oauth/access_token',{json:{
         "client_id":"06e862791312dfd72480",
         "client_secret": "4160078d4f864ec99533255daf1fc777fe5a4902",
@@ -19,7 +20,9 @@ router.post('/getUser', function(req, res) {
             }
         };
         request(options,(status, response, body)=>{
-            res.send(JSON.parse(body)['login']);
+            const result = {username: JSON.parse(body)['login']};
+            console.log(result)
+            res.send(result);
         });
     });
 });
