@@ -17,6 +17,7 @@ class Navbar extends React.Component {
     
     handleLinkClick() {
       this.setState({menuOpen: false});
+      console.log(this.key)
     }
     
     render(){
@@ -48,7 +49,7 @@ class Navbar extends React.Component {
             transition: 'filter 0.5s ease',
           },
         }
-      const menu = ['About Us','Our Products','Services','FAQ','Contact Us']
+      const menu = ['ToDo','Gunpowder','Animals']
       const menuItems = menu.map((val,index)=>{
         return (
           <MenuItem 
