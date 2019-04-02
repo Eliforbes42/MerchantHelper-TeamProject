@@ -68,9 +68,12 @@ module.exports = {
         mongoClient.connect(url, function(err, db) {
             if (err) throw err;
             var dbo = db.db('merchantDB');
+            var returnObj = {name:"",locale:"",message:"",status:""};
             dbo.collection('merchantDB').find({"isFort":true}).toArray(function(err,res){
                 if(res.length == 0){
-                    result("Failed to find gunpowder for the given location...");
+                    returnObj.message = "Failed to find gunpowder for the given location...";
+                    returnObj.status = "Failure";
+                    result(returnObj);
                 } else {
                     var curRow = GetRowNum(curLocale[0]);
                     var curCol = parseInt(curLocale.substring(1),10);
@@ -89,8 +92,12 @@ module.exports = {
                         if (!distances[dist]) {
                             distances[dist] = poss;
                         }
-                    }                
-                    result({"name":minDistFort.name, "locale":minDistFort.row + minDistFort.col.toString()});
+                    }
+                    returnObj.name = minDistFort.name;
+                    returnObj.locale = minDistFort.row+minDistFort.col.toString();
+                    returnObj.message = "Successfully retrieved closest gunpowder location."
+                    returnObj.status = "Success";        
+                    result(returnObj);
                 }
             });
         });
