@@ -2,6 +2,11 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import ReactDOM from 'react-dom'
+import {
+  Switch,
+  Route,
+  Redirect
+}              from 'react-router-dom';
 import './navbar.css'
 class Navbar extends React.Component {
     constructor(props){
@@ -15,7 +20,16 @@ class Navbar extends React.Component {
       this.setState({menuOpen:!this.state.menuOpen});
     }
     
-    handleLinkClick() {
+    handleLinkClick(val) {
+      switch (val){
+        case 'ToDo':
+          this.props.history.push('/todo');
+          return;
+        case 'Sign Out':
+          localStorage.clear();
+          this.props.history.push('/');
+          return;
+      }
       this.setState({menuOpen: false});
     }
     
@@ -48,13 +62,13 @@ class Navbar extends React.Component {
             transition: 'filter 0.5s ease',
           },
         }
-      const menu = ['ToDo','Gunpowder','Animals']
+      const menu = ['ToDo','Gunpowder','Animals', 'Sign Out']
       const menuItems = menu.map((val,index)=>{
         return (
           <MenuItem 
             key={index} 
             delay={`${index * 0.1}s`}
-            onClick={()=>{this.handleLinkClick();}}>{val}</MenuItem>)
+            onClick={()=>{this.handleLinkClick(`${val}`);}}>{val}</MenuItem>)
       });
       
       return(
@@ -195,8 +209,8 @@ class Navbar extends React.Component {
       }
     }
     
-    handleClick(){
-    this.setState({open:!this.state.open});
+    handleClick(val){
+      this.setState({open:!this.state.open});
     }
     
     render(){

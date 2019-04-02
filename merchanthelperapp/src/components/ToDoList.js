@@ -2,6 +2,12 @@ import React from 'react';
 import { Alert, Card, Button, Col, Row, Container } from 'react-bootstrap';
 import sample from '../mockdata/toDoItems.json';
 import moment from 'moment';
+import Navbar from './navbar/navbar'
+import {
+    Switch,
+    Route,
+    Redirect
+}              from 'react-router-dom';
 
 
 class ToDoList extends React.Component {
@@ -39,7 +45,7 @@ class ToDoList extends React.Component {
         this.state.toDoData.map(item => {
             items.push(toDoItem(item));
         })
-        return this.formatRows(3, this.groupByCount(4,items));
+        return this.formatRows(3, this.groupByCount(3,items));
     }
 
     completeToDo = (cardId) => {
@@ -56,7 +62,7 @@ class ToDoList extends React.Component {
         let result = [];
         data.map(item => {
             result.push(
-                <Row style={{height: '30rem'}}>
+                <Row style={{height: '15rem'}}>
                     {item}
                 </Row>
             )
@@ -107,6 +113,7 @@ class ToDoList extends React.Component {
     render() {
         return (
             <div style={{width: '100vw'}}>
+                <Navbar history={this.props.history}/>
                 {this.loginAlert()}
                 <center>
                 <div style={{height: '1rem'}} />

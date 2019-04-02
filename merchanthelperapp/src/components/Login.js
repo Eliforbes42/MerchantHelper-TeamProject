@@ -6,8 +6,14 @@ class Login extends React.Component {
         super(props)
     };
 
+    componentDidMount(){
+        if(localStorage.getItem('user') != undefined || localStorage.getItem('user') != null){
+            this.props.history.push('/login/success');
+        }
+    }
+
     loginHandler(evt){
-        console.log('click', evt);
+        console.log('Clicked Login', evt);
     }
 
     loginCard = () => {

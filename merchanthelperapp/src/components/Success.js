@@ -44,11 +44,11 @@ class Success extends React.Component {
                     }
                 });
                 const result = await rawData.json();
-                let addPlayerURL = '/api/users/addUser?name=' + result.username;
-                const resulting = await fetch(addPlayerURL, {
-                    method: 'GET'
-                });
                 if(result.username != undefined){
+                    let addPlayerURL = '/api/users/addUser?name=' + result.username;
+                    const resulting = await fetch(addPlayerURL, {
+                        method: 'GET'
+                    });
                     localStorage.setItem('user', result.username);
                     localStorage.setItem('lastLogin', moment().format());
                 }
@@ -61,7 +61,7 @@ class Success extends React.Component {
                     //True:     redirect to Home
                     //False:    redirect to CreateUser
                     if(true){
-                        return ( <ToDoList showAlert={true}/> )
+                        return ( <ToDoList showAlert={true} history={this.props.history}/> )
                     }
                 });
                 return result.username;
@@ -73,12 +73,14 @@ class Success extends React.Component {
                 //Checking that user exists
                 //True:     redirect to Home
                 //False:    redirect to CreateUser
-                let addPlayerURL = '/api/users/addUser?name=' + localStorage.getItem('user');
-                const resulting = fetch(addPlayerURL, {
-                    method: 'GET'
-                });
+                if(localStorage.getItem('user') != undefined){
+                    let addPlayerURL = '/api/users/addUser?name=' + localStorage.getItem('user');
+                    const resulting = fetch(addPlayerURL, {
+                        method: 'GET'
+                    });
+                }
                 if(true){
-                    return ( <ToDoList showAlert={false}/> )
+                    return ( <ToDoList showAlert={false} history={this.props.history}/> )
                 }
             });
             return localStorage.getItem('user');
@@ -99,7 +101,6 @@ class Success extends React.Component {
     render() {
         return (
             <div>
-                <Navbar/>
                 {this.renderRedirect()}
             </div>
         )

@@ -5,6 +5,7 @@ import {
 }              from 'react-router-dom';
 import Login   from './Login';
 import Success from './Success';
+import ToDo from './ToDoList';
 
 // The Main component renders one of the three provided
 // Routes (provided that one matches). Both the /roster
@@ -16,6 +17,7 @@ const Main = () => (
         <Switch>
             <Route exact path='/' component={Login}/>
             <Route path='/login/success/' component={Success}/>
+            <Route path='/todo' component={ToDo}/>
             <Route path='/login' component={Login}/>
         </Switch>
     </main>
