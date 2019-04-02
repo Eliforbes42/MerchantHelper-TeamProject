@@ -44,8 +44,11 @@ class Success extends React.Component {
                     }
                 });
                 const result = await rawData.json();
-
-                console.log(result);
+                let addPlayerURL = '/api/users/addUser?name=' + result.username;
+                const resulting = await fetch(addPlayerURL, {
+                    method: 'GET'
+                });
+                console.log(resulting);
                 if(result.username != undefined){
                     localStorage.setItem('user', result.username);
                     localStorage.setItem('lastLogin', moment().format());
@@ -71,6 +74,11 @@ class Success extends React.Component {
                 //Checking that user exists
                 //True:     redirect to Home
                 //False:    redirect to CreateUser
+                let addPlayerURL = '/api/users/addUser?name=' + localStorage.getItem('user');
+                const resulting = fetch(addPlayerURL, {
+                    method: 'GET'
+                });
+                console.log(resulting);
                 if(true){
                     return ( <ToDoList showAlert={false}/> )
                 }
@@ -89,6 +97,16 @@ class Success extends React.Component {
         }
         return body;
     };
+
+    callAddUser = async (url) => {
+        const response = await fetch('url');
+        const body = await response.json();
+
+        if (response.status !== 200) {
+        throw Error(body.message) 
+        }
+        return body;
+    }
 
     render() {
         return (
