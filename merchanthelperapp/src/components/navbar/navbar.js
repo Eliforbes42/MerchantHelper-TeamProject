@@ -17,7 +17,6 @@ class Navbar extends React.Component {
     
     handleLinkClick() {
       this.setState({menuOpen: false});
-      console.log(this.key)
     }
     
     render(){
