@@ -61,7 +61,7 @@ class Success extends React.Component {
                     //True:     redirect to Home
                     //False:    redirect to CreateUser
                     if(true){
-                        return ( <ToDoList showAlert={true}/> )
+                        return ( <ToDoList showAlert={true} history={this.props.history}/> )
                     }
                 });
                 return result.username;
@@ -78,7 +78,7 @@ class Success extends React.Component {
                     method: 'GET'
                 });
                 if(true){
-                    return ( <ToDoList showAlert={false}/> )
+                    return ( <ToDoList showAlert={false} history={this.props.history}/> )
                 }
             });
             return localStorage.getItem('user');
@@ -99,7 +99,6 @@ class Success extends React.Component {
     render() {
         return (
             <div>
-                <Navbar/>
                 {this.renderRedirect()}
             </div>
         )
