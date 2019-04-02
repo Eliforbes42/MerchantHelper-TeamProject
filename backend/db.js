@@ -94,6 +94,52 @@ module.exports = {
                 }
             });
         });
+    },
+    selectAnimals: (animals, curLocale, result) => {
+        //console.log("In db.js");
+        var query = "";
+        mongoClient.connect(url, function(err,db) {
+            if(err) throw err;
+            var dbo = db.db('merchantDB');
+            animals[0] = animals[0].charAt(0).toUpperCase() + animals[0].slice(1);
+            if(animals.length == 3){
+                animals[1] = animals[1].charAt(0).toUpperCase() + animals[1].slice(1);
+                animals[2] = animals[2].charAt(0).toUpperCase() + animals[2].slice(1);
+                query = JSON.parse('{ "has' + animals[0] + '" : true, "has' + animals[1] + '" : true, "has' + animals[2] + '" : true }');
+            } else if(animals.length == 2){
+                animals[1] = animals[1].charAt(0).toUpperCase() + animals[1].slice(1);
+                query = JSON.parse('{ "has' + animals[0] + '" : true, "has' + animals[1] + '" : true }');
+               
+            } else if(animals.length == 1){
+                query = JSON.parse('{ "has' + animals[0] + '" : true }');
+            }
+            console.log(query);
+            dbo.collection('merchantDB').find(query).toArray(function(err, res){
+                if(res.length == 0){
+                    result("Could not find a location with the specified animals...");
+                } else{
+                    let curRow = GetRowNum(curLocale[0]);
+                    let curCol = parseInt(curLocale.substring(1), 10);
+                    let dist = 0;
+                    let distances = [];
+                    let minDist = 2147483645;
+                    let minDistAnimals = null;
+
+                    for(var i = 0; i < res.length; i++){
+                        let poss = res[i];
+                        dist = Math.sqrt(Math.pow((GetRowNum(poss.row) - curRow), 2) + Math.pow((poss.col - curCol), 2));
+                        if(dist < minDist) {
+                            minDist = dist;
+                            minDistAnimals = poss;
+                        }
+                        if(!distances[dist]) {
+                            distances[dist] = poss;
+                        }
+                    }
+                    result({"name" : minDistAnimals.name, "locale" : minDistAnimals.row + minDistAnimals.col.toString()});
+                }
+            })
+        });
     }
 } //export
 

@@ -1,5 +1,5 @@
 'user strict'
-var {selectGp} = require('./db');
+var {selectGp, selectAnimals} = require('./db');
 
 var Island = function(island) {
     this.name = island.name;
@@ -16,4 +16,9 @@ Island.getGunpowder = function(curLocale, result) {
     selectGp(curLocale,result);
 };
 
+Island.getAnimals = function(animals, curLocale, result){
+    
+    
+    selectAnimals(animals, curLocale, result);
+};
 module.exports = {Island};
