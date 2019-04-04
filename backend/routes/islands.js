@@ -34,7 +34,6 @@ example response:
 }
 */
 router.get('/getAnimals', function(req, res){
-  console.log("In islands.js");
   var errorObj = {name:"",locale:"",message:""};
   let animalsArray = []
   if(req.query.locale != null){
@@ -61,7 +60,7 @@ router.get('/getAnimals', function(req, res){
         }
       });
     } else {
-      errorObj.message = "Error: Cannot get optimal locations for animals because there were no animals proided.";
+      errorObj.message = "Error: Cannot get optimal locations for animals because there were no animals provided.";
       res.send(errorObj);
     }
   } else {
