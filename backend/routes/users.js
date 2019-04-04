@@ -45,15 +45,24 @@ router.get('/getUser', function(req, res) {
         } else{
           res.send(res1);
         }
-    });
-    
-});
+    }); 
+  });
 });
 /*
 adds a todo item to the user's list
 */
 router.post('/addTodo', function(req, res) {
-
+  mongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    const dbo = db.db('mydb');
+    dbo.collection("users").update({name: req.query.user},{$push: {"todo":req.body}},function(err, res1) {
+        if(err) {
+            throw err;
+        } else{
+          res.send(res1);
+        }
+    }); 
+  });
 });
 /*
 marks a todo as completed
