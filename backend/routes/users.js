@@ -74,7 +74,16 @@ router.post('/addTodo', function(req, res) {
   });
 });
 /*
-marks a todo as completed
+
+purpose: Marks a todo as completed.
+example get url: http://localhost:5000/api/users/todoCompleted?user=User1&todoId=7
+
+example response:
+{
+    "n": 1,         -- this is the number of documents that matched the search criteria
+    "nModified": 1, -- this is the number of documents modified
+    "ok": 1         -- boolean success/failure to update
+}
 */
 router.get('/todoCompleted', function(req, res) {
   mongoClient.connect(url, function(err, db) {
