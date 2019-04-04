@@ -49,4 +49,16 @@ router.get('/getUser', function(req, res) {
     
 });
 });
+/*
+adds a todo item to the user's list
+*/
+router.post('/addTodo', function(req, res) {
+
+});
+/*
+marks a todo as completed
+*/
+router.post('/todoCompleted', function(req, res) {
+
+});
 module.exports = router;
