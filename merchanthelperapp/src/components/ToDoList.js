@@ -28,7 +28,7 @@ class ToDoList extends React.Component {
     //Here we set our mock data or real data in our states
     //Also setup listener to respond to current window dimensions
     componentDidMount(){
-        this.setState({toDoData: sample});
+        this.getToDoData();
         this.updateWindowDimensions();
         window.addEventListener('resize', this.updateWindowDimensions);
     }
@@ -52,6 +52,54 @@ class ToDoList extends React.Component {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
     }
 
+    //getToDoData() will do an asynchronous call for all user data
+    //  with the user data we pull out the todo data and then set 
+    //  the state's todoData to the users data
+    getToDoData = () => {
+        (async () => {
+            const rawData = await fetch(`/api/users/getUser?user=${localStorage.getItem('user')}`, {
+                method: 'GET'
+            });
+            const result = await rawData.json();
+            console.log(result[0].todo);
+            if(result[0].todo != undefined){
+                console.log(result);
+                this.setState({toDoData: result[0].todo});
+            }
+        })();
+    }
+
+    //getToDoData() will do an asynchronous call for all user data
+    //  with the user data we pull out the todo data and then set 
+    //  the state's todoData to the users data
+    setToDoComplete = (id) => {
+        (async () => {
+            const rawData = await fetch(`/api/users/todoCompleted?user=${localStorage.getItem('user')}&todoId=${id}`, {
+                method: 'GET'
+            });
+            this.getToDoData();
+        })();
+    }
+
+    //postToDoData() will do an asynchronous post request for updating
+    //  the user data with the new todo item. After call this will
+    //  rerender the page via getToDoData().
+    postToDoData = (data) => {
+        console.log(data);
+        (async () => {
+            const rawData = await fetch(`/api/users/addTodo?user=${localStorage.getItem('user')}`, {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+            const result = await rawData.json();
+            console.log(result);
+            this.getToDoData();
+        })();
+    }
+
     //addCards() is a parent function that contains an inner helper 
     //  function, toDoItem(item) to build a single card. The data 
     //  necessary to populate the card is passed in to the helper function.
@@ -71,7 +119,7 @@ class ToDoList extends React.Component {
                 <Card.Text style={{color:'white'}}>
                 {item.description}
                 </Card.Text>
-                <Button variant="success" onClick={() => this.completeToDo(`${item.id}`)}>Complete</Button>
+                <Button variant="success" onClick={() => this.completeToDo(`${item._id}`)}>Complete</Button>
             </Card.Body>
             </Card>
             </center>
@@ -79,7 +127,8 @@ class ToDoList extends React.Component {
         )};
         let items = [];
         this.state.toDoData.map(item => {
-            items.push(toDoItem(item));
+            if(item.complete == 0)
+                items.push(toDoItem(item));
         })
         return this.formatRows(this.state.rowCount, this.groupByCount(this.state.rowCount,items));
     }
@@ -90,13 +139,7 @@ class ToDoList extends React.Component {
     //  item to a new temp array and returning the temp array which is
     //  missing the selected value with the passed in id.
     completeToDo = (cardId) => {
-        let temp = [];
-        this.state.toDoData.map(item => {
-            if(item.id != cardId){
-                temp.push(item);
-            }
-        })
-        this.setState({toDoData: temp});
+        this.setToDoComplete(cardId);
     }
     //Helper function to group cards in a row by a set count
     //  Also note that row height will add the spacing between rows!
@@ -167,8 +210,8 @@ class ToDoList extends React.Component {
     //  the child component ToDoModal which will execute the function upon
     //  the user selecting save with the new card item for the todo list
     updateWithNewCard = (data) => {
-        sample.push(data); //Will need to swap out with request
-        this.setState({toDoData: sample}); //Will be changed out for get request of todo data
+        this.postToDoData(data);
+        this.getToDoData();
     }
 
     render() {

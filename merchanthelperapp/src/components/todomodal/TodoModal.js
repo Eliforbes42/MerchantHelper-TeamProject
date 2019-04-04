@@ -8,6 +8,7 @@ import {
   Route,
   Redirect
 }              from 'react-router-dom';
+import uuidv1 from 'uuid/v1';
 
 class TodoModal extends React.Component {
     constructor(props, context) {
@@ -32,7 +33,7 @@ class TodoModal extends React.Component {
 
     handleSave(){
         const finalData = {
-            id: '10',
+            _id: uuidv1(),
             title: this.state.title,
             location: this.state.location,
             description: this.state.description,
