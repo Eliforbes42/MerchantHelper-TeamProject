@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 /nikos-data
+../nikos-data
 /.pnp
 .pnp.js
 

@@ -7,7 +7,7 @@ var User = function(user) {
 };
 
 User.addUser = function(user, result) {
-    insertUser(user,'players',result);    
+    insertUser(user,'users',result);    
 };
 
 module.exports = {User};
