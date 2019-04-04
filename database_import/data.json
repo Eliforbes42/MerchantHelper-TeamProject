@@ -1,0 +1,59 @@
+{"row": "K","col": 9,"name": "Hidden Spring Keep","hasChicken": false,"hasPig": false,"hasSnake": false, "isFort": true }
+{"row": "C","col": 7,"name": "Keel Haul Fort","hasChicken": false,"hasPig": false,"hasSnake": false, "isFort": true }
+{"row": "O","col": 6,"name": "Kraken Watchtower","hasChicken": false,"hasPig": false,"hasSnake": false, "isFort": true }
+{"row": "J","col": 21,"name": "Lost Gold Fort","hasChicken": false,"hasPig": false,"hasSnake": false, "isFort": true }
+{"row": "P","col": 17,"name": "Old Boot Fort","hasChicken": false,"hasPig": false,"hasSnake": false, "isFort": true }
+{"row": "U","col": 5,"name": "Shark Fin Camp","hasChicken": false,"hasPig": false,"hasSnake": false, "isFort": true }
+{"row": "E","col": 17,"name": "Sailor's Knot Stronghold","hasChicken": false,"hasPig": false,"hasSnake": false, "isFort": true }
+{"row": "U","col": 11,"name": "Skull Keep","hasChicken": false,"hasPig": false,"hasSnake": false, "isFort": true }
+{"row": "S","col": 22,"name": "The Crow's Nest Fortress","hasChicken": false,"hasPig": false,"hasSnake": false, "isFort": true }
+{"row": "T","col": 19,"name": "Barnacle Cay","hasChicken": true,"hasPig": false,"hasSnake": false, "isFort": false }
+{"row": "T","col": 3,"name": "Black Sands Atoll","hasChicken": false,"hasPig": false,"hasSnake": true, "isFort": false }
+{"row": "X","col": 5,"name": "Black Water Enclave","hasChicken": true,"hasPig": false,"hasSnake": false, "isFort": false }
+{"row": "S","col": 6,"name": "Blind Man's Lagoon","hasChicken": false,"hasPig": true,"hasSnake": false, "isFort": false }
+{"row": "N","col": 25,"name": "Booty Isle","hasChicken": false,"hasPig": false,"hasSnake": true, "isFort": false }
+{"row": "H","col": 5,"name": "Boulder Cay","hasChicken": false,"hasPig": true,"hasSnake": false, "isFort": false }
+{"row": "H","col": 11,"name": "Cannon Cove","hasChicken": true,"hasPig": true,"hasSnake": false, "isFort": false }
+{"row": "M","col": 16,"name": "Castaway Isle","hasChicken": false,"hasPig": false,"hasSnake": true, "isFort": false }
+{"row": "K","col": 19,"name": "Chicken Isle","hasChicken": true,"hasPig": true,"hasSnake": false, "isFort": false }
+{"row": "B","col": 10,"name": "Crescent Isle","hasChicken": false,"hasPig": true,"hasSnake": true, "isFort": false }
+{"row": "Q","col": 19,"name": "Crook's Hollow","hasChicken": true,"hasPig": false,"hasSnake": true, "isFort": false }        
+{"row": "Q","col": 22,"name": "Cutlass Cay","hasChicken": false,"hasPig": false,"hasSnake": true, "isFort": false }
+{"row": "U","col": 24,"name": "Devil's Ridge","hasChicken": false,"hasPig": true,"hasSnake": true, "isFort": false }
+{"row": "E","col": 21,"name": "Discovery Ridge","hasChicken": true,"hasPig": false,"hasSnake": true, "isFort": false }
+{"row": "K","col": 17,"name": "Fools Lagoon","hasChicken": false,"hasPig": true,"hasSnake": false, "isFort": false }
+{"row": "S","col": 10,"name": "Isle of Last Words","hasChicken": false,"hasPig": false,"hasSnake": true, "isFort": false }
+{"row": "X","col": 15,"name": "Kraken's Fall","hasChicken": false,"hasPig": true,"hasSnake": true, "isFort": false }
+{"row": "D","col": 15,"name": "Lagoon of Whispers","hasChicken": false,"hasPig": false,"hasSnake": true, "isFort": false }
+{"row": "Y","col": 13,"name": "Liar's Backbone","hasChicken": false,"hasPig": false,"hasSnake": true, "isFort": false }
+{"row": "J","col": 6,"name": "Lone Cove","hasChicken": false,"hasPig": true,"hasSnake": true, "isFort": false }
+{"row": "I","col": 9,"name": "Lonely Isle","hasChicken": false,"hasPig": false,"hasSnake": true, "isFort": false }
+{"row": "L","col": 25,"name": "Lookout Point","hasChicken": false,"hasPig": true,"hasSnake": false, "isFort": false }
+{"row": "V","col": 3,"name": "Marauder's Arch","hasChicken": true,"hasPig": false,"hasSnake": true, "isFort": false }
+{"row": "B","col": 16,"name": "Mermaid's Hideaway","hasChicken": true,"hasPig": true,"hasSnake": false, "isFort": false }
+{"row": "R","col": 24,"name": "Mutineer Rock","hasChicken": true,"hasPig": true,"hasSnake": false, "isFort": false }
+{"row": "Q","col": 4,"name": "Old Faithful Isle","hasChicken": true,"hasPig": true,"hasSnake": false, "isFort": false }
+{"row": "G","col": 23,"name": "Old Salts Atoll","hasChicken": true,"hasPig": false,"hasSnake": false, "isFort": false }
+{"row": "O","col": 21,"name": "Paradise Spring","hasChicken": false,"hasPig": true,"hasSnake": false, "isFort": false }
+{"row": "K","col": 4,"name": "Picaroon Palms","hasChicken": false,"hasPig": false,"hasSnake": true, "isFort": false }
+{"row": "V","col": 6,"name": "Plunderer's Plight","hasChicken": false,"hasPig": true,"hasSnake": false, "isFort": false }
+{"row": "H","col": 19,"name": "Plunder Valley","hasChicken": true,"hasPig": true,"hasSnake": false, "isFort": false }
+{"row": "D","col": 9,"name": "Rapier Cay","hasChicken": true,"hasPig": false,"hasSnake": false, "isFort": false }
+{"row": "J","col": 11,"name": "Rum Runner Isle","hasChicken": false,"hasPig": true,"hasSnake": false, "isFort": false }
+{"row": "B","col": 4,"name": "Sailor's Bounty","hasChicken": true,"hasPig": true,"hasSnake": false, "isFort": false }
+{"row": "I","col": 3,"name": "Salty Sands","hasChicken": true,"hasPig": false,"hasSnake": false, "isFort": false }
+{"row": "D","col": 5,"name": "Sandy Shallows","hasChicken": false,"hasPig": false,"hasSnake": true, "isFort": false }
+{"row": "N","col": 4,"name": "Scurvy Isle","hasChicken": true,"hasPig": false,"hasSnake": false, "isFort": false }
+{"row": "B","col": 13,"name": "Sea Dog's Rest","hasChicken": true,"hasPig": true,"hasSnake": false, "isFort": false }
+{"row": "I","col": 24,"name": "Shark Bait Cove","hasChicken": true,"hasPig": true,"hasSnake": false, "isFort": false }
+{"row": "U","col": 15,"name": "Shark Tooth Key","hasChicken": true,"hasPig": false,"hasSnake": false, "isFort": false }
+{"row": "Q","col": 12,"name": "Shipwreck Bay","hasChicken": true,"hasPig": true,"hasSnake": false, "isFort": false }
+{"row": "V","col": 13,"name": "Shiver Retreat","hasChicken": true,"hasPig": false,"hasSnake": false, "isFort": false }
+{"row": "F","col": 3,"name": "Smuggler's Bay","hasChicken": true,"hasPig": false,"hasSnake": true, "isFort": false }
+{"row": "N","col": 19,"name": "Snake Island","hasChicken": false,"hasPig": true,"hasSnake": true, "isFort": false }
+{"row": "T","col": 13,"name": "The Crooked Masts","hasChicken": true,"hasPig": false,"hasSnake": true, "isFort": false }
+{"row": "T","col": 8,"name": "The Sunken Grove","hasChicken": false,"hasPig": true,"hasSnake": true, "isFort": false }
+{"row": "P","col": 25,"name": "Thieves Haven","hasChicken": true,"hasPig": true,"hasSnake": false, "isFort": false }
+{"row": "W","col": 11,"name": "Tri-Rock Isle","hasChicken": true,"hasPig": false,"hasSnake": false, "isFort": false }
+{"row": "I","col": 11,"name": "Twin Groves","hasChicken": true,"hasPig": false,"hasSnake": false, "isFort": false }
+{"row": "G","col": 15,"name": "Wanderer's Refuge","hasChicken": true,"hasPig": false,"hasSnake": true, "isFort": false }

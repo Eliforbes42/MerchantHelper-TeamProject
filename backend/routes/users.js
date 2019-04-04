@@ -38,8 +38,8 @@ example response:
 router.get('/getUser', function(req, res) {
   mongoClient.connect(url, function(err, db) {
     if (err) throw err;
-    const dbo = db.db('mydb');
-    dbo.collection("users").find({name: req.query.user}).toArray(function(err, res1) {
+    const dbo = db.db('merchantDB');
+    dbo.collection("players").find({name: req.query.user}).toArray(function(err, res1) {
         if(err) {
             throw err;
         } else{
@@ -68,8 +68,8 @@ example response:
 router.post('/addTodo', function(req, res) {
   mongoClient.connect(url, function(err, db) {
     if (err) throw err;
-    const dbo = db.db('mydb');
-    dbo.collection("users").update({name: req.query.user},{$push: {"todo":req.body}},function(err, res1) {
+    const dbo = db.db('merchantDB');
+    dbo.collection("players").update({name: req.query.user},{$push: {"todo":req.body}},function(err, res1) {
         if(err) {
             throw err;
         } else{
@@ -97,8 +97,8 @@ example response:
 router.get('/todoCompleted', function(req, res) {
   mongoClient.connect(url, function(err, db) {
     if (err) throw err;
-    const dbo = db.db('mydb');
-    dbo.collection("users").update({name: req.query.user, "todo.id":req.query.todoId},{$set: {"todo.$.completed":true}},function(err, res1) {
+    const dbo = db.db('merchantDB');
+    dbo.collection("players").update({name: req.query.user, "todo._id":req.query.todoId},{$set: {"todo.$.complete":1}},function(err, res1) {
         if(err) {
             throw err;
         } else{
