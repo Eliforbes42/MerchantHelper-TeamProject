@@ -80,7 +80,7 @@ router.get('/todoCompleted', function(req, res) {
   mongoClient.connect(url, function(err, db) {
     if (err) throw err;
     const dbo = db.db('mydb');
-    dbo.collection("users").update({name: req.query.user},{$set: {"completed":true}},function(err, res1) {
+    dbo.collection("users").update({name: req.query.user, "todo.id":req.query.todoId},{$set: {"completed":true}},function(err, res1) {
         if(err) {
             throw err;
         } else{
