@@ -53,6 +53,11 @@ purpose: Adds a todo item to the user's list.
 example get url: http://localhost:5000/api/users/addTodo?user=User1
 example body: {"id": "7", "description":"test insert", "title": "test", "completed": false,"location": null}
 
+Parameters:
+1. "user", the users username (string)
+Body:
+1. a JSON object of the ToDo item to be inserted
+
 example response:
 {
     "n": 1,         -- this is the number of documents that matched the search criteria
@@ -77,6 +82,10 @@ router.post('/addTodo', function(req, res) {
 
 purpose: Marks a todo as completed.
 example get url: http://localhost:5000/api/users/todoCompleted?user=User1&todoId=7
+
+Parameters:
+1. "user", the users username (string)
+2. "todoId", the id of the todo item to be updated (string)
 
 example response:
 {
