@@ -96,7 +96,7 @@ class ToDoList extends React.Component {
             });
             const result = await rawData.json();
             console.log(result);
-            this.getToDoData();
+            this.getToDoData(); //call for page to rerender
         })();
     }
 
