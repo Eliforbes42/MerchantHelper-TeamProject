@@ -49,7 +49,16 @@ router.get('/getUser', function(req, res) {
   });
 });
 /*
-adds a todo item to the user's list
+purpose: Adds a todo item to the user's list.
+example get url: http://localhost:5000/api/users/addTodo?user=User1
+example body: {"id": "7", "description":"test insert", "title": "test", "completed": false,"location": null}
+
+example response:
+{
+    "n": 1,         -- this is the number of documents that matched the search criteria
+    "nModified": 1, -- this is the number of documents modified
+    "ok": 1         -- boolean success/failure to update
+}
 */
 router.post('/addTodo', function(req, res) {
   mongoClient.connect(url, function(err, db) {
