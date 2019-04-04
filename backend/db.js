@@ -57,7 +57,6 @@ module.exports = {
             if (err) throw err;
             const dbo = db.db('merchantDB');
             const pk = {[id]: data};
-            //const updates = {$set: data};
             dbo.collection(collection).find(pk).toArray(function(err,res){
                 if (err) throw err;
                 else return res;
@@ -103,7 +102,7 @@ module.exports = {
         });
     },
     selectAnimals: (animals, curLocale, result) => {
-        //console.log("In db.js");
+        var returnObj = {name:"",locale:"",message:""}
         var query = "";
         mongoClient.connect(url, function(err,db) {
             if(err) throw err;
@@ -123,7 +122,8 @@ module.exports = {
             console.log(query);
             dbo.collection('merchantDB').find(query).toArray(function(err, res){
                 if(res.length == 0){
-                    result("Could not find a location with the specified animals...");
+                    returnObj.message = "Error: Could not find a location with the specified animals...";
+                    result(returnObj);
                 } else{
                     let curRow = GetRowNum(curLocale[0]);
                     let curCol = parseInt(curLocale.substring(1), 10);
@@ -143,7 +143,10 @@ module.exports = {
                             distances[dist] = poss;
                         }
                     }
-                    result({"name" : minDistAnimals.name, "locale" : minDistAnimals.row + minDistAnimals.col.toString()});
+                    returnObj.name = minDistAnimals.name;
+                    returnObj.locale = minDistAnimals.row+minDistAnimals.col.toString();
+                    returnObj.message = "Success";
+                    result(returnObj);
                 }
             })
         });
@@ -151,33 +154,10 @@ module.exports = {
 } //export
 
 let GetRowNum = (char) => {
-    switch(char) {
-        case 'A': return 0;
-        case 'B': return 1;
-        case 'C': return 2;
-        case 'D': return 3;
-        case 'E': return 4;
-        case 'F': return 5;
-        case 'G': return 6;
-        case 'H': return 7;
-        case 'I': return 8;
-        case 'J': return 9;
-        case 'K': return 10;
-        case 'L': return 11;
-        case 'M': return 12;
-        case 'N': return 13;
-        case 'O': return 14;
-        case 'P': return 15;
-        case 'Q': return 16;
-        case 'R': return 17;
-        case 'S': return 18;
-        case 'T': return 19;
-        case 'U': return 20;
-        case 'V': return 21;
-        case 'W': return 22;
-        case 'X': return 23;
-        case 'Y': return 24;
-        case 'Z': return 25;
-        default: break;
-    }
+    var charToNum = {'A':1,'B':2,'C':3,'D':4,'E':5,'F':6,
+                     'G':7,'H':8,'I':9,'J':10,'K':11,
+                     'L':12,'M':13,'N':14,'O':15,'P':16,
+                     'Q':17,'R':18,'S':19,'T':20,'U':21,
+                     'V':22,'W':23,'X':24,'Y':25,'Z':26};
+    return charToNum[char];
 };
