@@ -76,7 +76,17 @@ router.post('/addTodo', function(req, res) {
 /*
 marks a todo as completed
 */
-router.post('/todoCompleted', function(req, res) {
-
+router.get('/todoCompleted', function(req, res) {
+  mongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    const dbo = db.db('mydb');
+    dbo.collection("users").update({name: req.query.user},{$set: {"completed":true}},function(err, res1) {
+        if(err) {
+            throw err;
+        } else{
+          res.send(res1);
+        }
+    }); 
+  });
 });
 module.exports = router;
