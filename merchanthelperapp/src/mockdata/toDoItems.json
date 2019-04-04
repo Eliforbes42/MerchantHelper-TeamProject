@@ -1,9 +1,9 @@
 [
-    {"id": "0", "description":"Return to market with 2 gold pigs", "title": "Merchant Quest", "completed": false},
-    {"id": "1", "description":"Collect 60000 gold for new boat", "title": "Save up for new boat", "completed": false},
-    {"id": "2", "description":"Return to market with 2 red snakes and 1 gold snake", "title": "Merchant Quest", "completed": false},
-    {"id": "3", "description":"Finish 10 merchant quests", "title": "Complete 10 Merchant Quests", "completed": false},
-    {"id": "4", "description":"Collect 5000 gold", "title": "Get new pistol skin", "completed": false},
-    {"id": "5", "description":"Return to market with 3 golden chickens", "title": "Merchant Quest", "completed": false},
-    {"id": "6", "description":"Find 10 people and murder them", "title": "Kill 10 players", "completed": false}
+    {"id": "0", "location": "The island", "description":"Return to market with 2 gold pigs", "title": "Merchant Quest", "completed": false},
+    {"id": "1", "location": "The island", "description":"Collect 60000 gold for new boat", "title": "Save up for new boat", "completed": false},
+    {"id": "2", "location": "The island", "description":"Return to market with 2 red snakes and 1 gold snake", "title": "Merchant Quest", "completed": false},
+    {"id": "3", "location": "The island", "description":"Finish 10 merchant quests", "title": "Complete 10 Merchant Quests", "completed": false},
+    {"id": "4", "location": "The island", "description":"Collect 5000 gold", "title": "Get new pistol skin", "completed": false},
+    {"id": "5", "location": "The island", "description":"Return to market with 3 golden chickens", "title": "Merchant Quest", "completed": false},
+    {"id": "6", "location": "The island", "description":"Find 10 people and murder them", "title": "Kill 10 players", "completed": false}
 ]

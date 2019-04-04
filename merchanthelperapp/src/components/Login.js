@@ -1,5 +1,6 @@
 import React from 'react';
 import { Alert, Card, Button, Col, Row } from 'react-bootstrap';
+import moment from 'moment';
 
 class Login extends React.Component {
     constructor(props){
@@ -7,7 +8,14 @@ class Login extends React.Component {
     };
 
     componentDidMount(){
-        if(localStorage.getItem('user') != undefined && localStorage.getItem('user') != null){
+        let lastLogin = 1;
+        if(localStorage.getItem('lastLogin') != null){
+            const start = moment(new Date());
+            const end = moment(localStorage.getItem('lastLogin'));
+            const hours = moment.duration(start.diff(end)).asHours();
+            this.lastLogin = hours;
+        }
+        if(localStorage.getItem('user') != undefined && localStorage.getItem('user') != null && this.lastLogin < 0.5){
             this.props.history.push('/login/success');
         }
     }

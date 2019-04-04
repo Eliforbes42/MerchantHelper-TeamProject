@@ -3,6 +3,7 @@ import { Alert, Card, Button, Col, Row, Container } from 'react-bootstrap';
 import sample from '../mockdata/toDoItems.json';
 import moment from 'moment';
 import Navbar from './navbar/navbar'
+import TodoModal from './todomodal/TodoModal'
 import {
     Switch,
     Route,
@@ -61,9 +62,12 @@ class ToDoList extends React.Component {
             return (
             <Col>
             <center>
-            <Card id={item.id} bg="dark" style={{ width: '13rem', "box-shadow":'0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'}}>
+            <Card id={item.id} bg="dark" style={{ width: '15rem', "box-shadow":'0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'}}>
             <Card.Body>
                 <Card.Title style={{color:'white'}}>{item.title}</Card.Title>
+                <Card.Text style={{color:'orange', height: '1rem'}}>
+                Location: {item.location}
+                </Card.Text>
                 <Card.Text style={{color:'white'}}>
                 {item.description}
                 </Card.Text>
@@ -95,6 +99,7 @@ class ToDoList extends React.Component {
         this.setState({toDoData: temp});
     }
     //Helper function to group cards in a row by a set count
+    //  Also note that row height will add the spacing between rows!
     formatRows = (countsOf, data) => {
         let result = [];
         data.map(item => {
@@ -150,16 +155,34 @@ class ToDoList extends React.Component {
         this.setState({hideAlert: true});
     }
 
+    addToDoItemButton(){
+        return(
+            <div style={{width: '90vw'}}>
+                <Button variant="primary" className="float-right" >Create todo</Button>
+            </div>
+        );
+    }
+
+    //updateWithNewCard is a parent function that is passed as a prop to 
+    //  the child component ToDoModal which will execute the function upon
+    //  the user selecting save with the new card item for the todo list
+    updateWithNewCard = (data) => {
+        sample.push(data); //Will need to swap out with request
+        this.setState({toDoData: sample}); //Will be changed out for get request of todo data
+    }
+
     render() {
         return (
             <div style={{width: '100vw'}}>
                 <Navbar history={this.props.history}/>
                 {this.loginAlert()}
                 <center>
-                <div style={{height: '1rem'}} />
+                <div style={{height: '2rem'}} />
                 <h1>To Do List</h1>
                 </center>
-                <div style={{height: '1rem'}} />
+                <div style={{height: '2rem'}} />
+                <TodoModal history={this.props.history} passed={this.updateWithNewCard}/>
+                <div style={{height: '3rem'}} />
                 {this.addCards()}
             </div>
         )
