@@ -45,8 +45,66 @@ router.get('/getUser', function(req, res) {
         } else{
           res.send(res1);
         }
-    });
-    
+    }); 
+  });
 });
+/*
+purpose: Adds a todo item to the user's list.
+example get url: http://localhost:5000/api/users/addTodo?user=User1
+example body: {"id": "7", "description":"test insert", "title": "test", "completed": false,"location": null}
+
+Parameters:
+1. "user", the users username (string)
+Body:
+1. a JSON object of the ToDo item to be inserted
+
+example response:
+{
+    "n": 1,         -- this is the number of documents that matched the search criteria
+    "nModified": 1, -- this is the number of documents modified
+    "ok": 1         -- boolean success/failure to update
+}
+*/
+router.post('/addTodo', function(req, res) {
+  mongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    const dbo = db.db('mydb');
+    dbo.collection("users").update({name: req.query.user},{$push: {"todo":req.body}},function(err, res1) {
+        if(err) {
+            throw err;
+        } else{
+          res.send(res1);
+        }
+    }); 
+  });
+});
+/*
+
+purpose: Marks a todo as completed.
+example get url: http://localhost:5000/api/users/todoCompleted?user=User1&todoId=7
+
+Parameters:
+1. "user", the users username (string)
+2. "todoId", the id of the todo item to be updated (string)
+
+example response:
+{
+    "n": 1,         -- this is the number of documents that matched the search criteria
+    "nModified": 1, -- this is the number of documents modified
+    "ok": 1         -- boolean success/failure to update
+}
+*/
+router.get('/todoCompleted', function(req, res) {
+  mongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    const dbo = db.db('mydb');
+    dbo.collection("users").update({name: req.query.user, "todo.id":req.query.todoId},{$set: {"todo.$.completed":true}},function(err, res1) {
+        if(err) {
+            throw err;
+        } else{
+          res.send(res1);
+        }
+    }); 
+  });
 });
 module.exports = router;
