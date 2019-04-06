@@ -6,6 +6,7 @@ import {
 import Login   from './Login';
 import Success from './Success';
 import ToDo from './ToDoList';
+import SearchItem from './SearchItems'
 
 // The Main component renders one of the three provided
 // Routes (provided that one matches). Both the /roster
@@ -20,6 +21,7 @@ const Main = () => (
             <Route path='/todo' component={ToDo}/>
             <Route path='/savingToDo' component={ToDo}/>
             <Route path='/login' component={Login}/>
+            <Route path='/search' component={SearchItem}/>
         </Switch>
     </main>
 );
