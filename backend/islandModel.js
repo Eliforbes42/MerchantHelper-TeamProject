@@ -17,8 +17,6 @@ Island.getGunpowder = function(curLocale, result) {
 };
 
 Island.getAnimals = function(animals, curLocale, result){
-    
-    
     selectAnimals(animals, curLocale, result);
 };
 module.exports = {Island};
