@@ -66,6 +66,7 @@ class SearchItems extends React.Component {
             <Table striped bordered hover variant='dark' style={{marginRight: '1%', marginLeft: '1%'}}>
             <thead>
                 <tr>
+                    <th>Type</th>
                     <th>Location</th>
                     <th>Name</th>  
                 </tr>
@@ -73,10 +74,12 @@ class SearchItems extends React.Component {
 
             <tbody>
             <tr>
+                <td>Gunpowder</td>
                 <td>{this.state.gunpowderData[1]}</td>
                 <td>{this.state.gunpowderData[0]}</td>
             </tr>
             <tr>
+                <td>Animals</td>
                 <td>{this.state.animalData[1]}</td>
                 <td>{this.state.animalData[0]}</td>
             </tr>
