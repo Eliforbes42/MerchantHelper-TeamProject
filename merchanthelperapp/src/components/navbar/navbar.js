@@ -29,6 +29,9 @@ class Navbar extends React.Component {
           localStorage.clear();
           this.props.history.push('/');
           return;
+        case 'Search for Items':
+          this.props.history.push('/search');
+          return;
       }
       this.setState({menuOpen: false});
     }
@@ -62,7 +65,7 @@ class Navbar extends React.Component {
             transition: 'filter 0.5s ease',
           },
         }
-      const menu = ['ToDo','Gunpowder','Animals', 'Sign Out']
+      const menu = ['ToDo','Search for Items', 'Sign Out']
       const menuItems = menu.map((val,index)=>{
         return (
           <MenuItem 
