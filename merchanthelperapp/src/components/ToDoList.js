@@ -61,7 +61,7 @@ class ToDoList extends React.Component {
                 method: 'GET'
             });
             const result = await rawData.json();
-            if(result[0].todo != undefined){
+            if(result && result[0].todo != undefined){
                 console.log(result);
                 this.setState({toDoData: result[0].todo});
             }
